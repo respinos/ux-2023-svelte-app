@@ -24,6 +24,13 @@
   export let search_state = 'default';
   let searchFormDisplayed = ( search_state == 'default' );
 
+  let assetPath = '';
+  if ( window.HT ) {
+    assetPath = new URL(document.querySelector('script[data-shoelace]').src);
+    assetPath.pathname = '';
+    assetPath = assetPath.toString();
+  }
+
   function displaySearchForm() {
     if ( search_state == 'default' ) {
       return true;
@@ -176,7 +183,7 @@
   <header>
     <div class="menu">
       <a href="https://www.hathitrust.org" aria-label="Home">
-        <img class="logo" alt="HathiTrust Digital Library" src={logo} />
+        <img class="logo" alt="HathiTrust Digital Library" src={assetPath + logo} />
       </a>
       {#if containerWidth == 0}
         <div><sl-icon name="smartwatch"></sl-icon></div>
