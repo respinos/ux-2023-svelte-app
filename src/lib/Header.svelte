@@ -18,6 +18,8 @@
   import '@shoelace-style/shoelace/dist/components/resize-observer/resize-observer.js';
   import '@shoelace-style/shoelace/dist/components/animation/animation.js';
 
+  import menuData from '../assets/menuData.json';
+
   import SearchForm from './SearchForm.svelte';
 
   let containerWidth = 2000;
@@ -52,37 +54,6 @@
     }
     alert(`Would navigate to ${selectedItem.getTextLabel()}`);
   }
-
-  // this data might be fetched
-  export let menuData = {};
-  menuData['about'] = [
-    'Our Mission',
-    'HathiTrust Research Center',
-    'HathiTrust by the Numbers',
-    'Our Team',
-    'Careers',
-  ];
-  menuData['collection'] = [
-    'About the Collection',
-    'Collection Builder',
-    'How to Search & Access',
-    'How to Contribute Content',
-    'Preservation',
-    'Terms & Conditions',
-  ]
-  menuData['memberLibraries'] = [
-    'Member List',
-    'Services',
-    'Collaborations',
-    'Governance & Groups',
-    'Member Groups'
-  ]
-
-  menuData['newsEvents'] = [
-    'Perspectives',
-    'Newsletters',
-    'Events & Webinars'
-  ]
 
   let resizeObserver;
 

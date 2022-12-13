@@ -18,7 +18,6 @@
   function _updateSearchType() {
     let value = _searchtype.value;
     _root.dataset.field = value;
-    // let menuItem = _searchtype.querySelector(`sl-menu-item[value="${value}"]`);
     let menuItem = _searchtype.querySelector(`sl-menu-item[aria-checked="true"]`);
     window._s1 = _searchtype;
     console.log("-- updateSearchType", value, _searchtype, menuItem);
