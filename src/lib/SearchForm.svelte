@@ -251,7 +251,7 @@
         <sl-icon name="question-circle"></sl-icon>
         Search Help
       </a>
-      <a href="/Search/Advanced">
+      <a href={`//${CATALOG_DOMAIN}/Search/Advanced`}>
         <sl-icon name="search"></sl-icon>
         Advanced Collection Search
       </a>
