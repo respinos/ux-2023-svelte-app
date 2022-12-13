@@ -44,6 +44,15 @@
     searchFormDisplayed = ! searchFormDisplayed;
   }
 
+  function handleNavigation(event) {
+    const selectedItem = event.detail.item;
+    if ( window.HT && selectedItem.getTextLabel() == 'Collection Builder' ) {
+      location.href = `//${HT.service_domain}/cgi/mb`;
+      return;
+    }
+    alert(`Would navigate to ${selectedItem.getTextLabel()}`);
+  }
+
   // this data might be fetched
   export let menuData = {};
   menuData['about'] = [
@@ -55,6 +64,7 @@
   ];
   menuData['collection'] = [
     'About the Collection',
+    'Collection Builder',
     'How to Search & Access',
     'How to Contribute Content',
     'Preservation',
@@ -189,7 +199,7 @@
         <div><sl-icon name="smartwatch"></sl-icon></div>
       {:else if containerWidth >= 1170}
         <nav class="nav">
-          <sl-dropdown>
+          <sl-dropdown on:sl-select={handleNavigation}>
             <sl-button variant="text" slot="trigger" caret>About</sl-button>
             <sl-menu>
               {#each menuData.about as linkText}
@@ -197,7 +207,7 @@
               {/each}
             </sl-menu>
           </sl-dropdown>
-          <sl-dropdown>
+          <sl-dropdown on:sl-select={handleNavigation}>
             <sl-button variant="text" slot="trigger" caret>The Collection</sl-button>
             <sl-menu>
               {#each menuData.collection as linkText}
@@ -205,7 +215,7 @@
               {/each}
             </sl-menu>
           </sl-dropdown>
-          <sl-dropdown>
+          <sl-dropdown on:sl-select={handleNavigation}>
             <sl-button variant="text" slot="trigger" caret>Member Libraries</sl-button>
             <sl-menu>
               {#each menuData.memberLibraries as linkText}
@@ -214,7 +224,7 @@
             </sl-menu>
           </sl-dropdown>
           <sl-button variant="text">Join Us</sl-button>
-          <sl-dropdown>
+          <sl-dropdown on:sl-select={handleNavigation}>
             <sl-button variant="text" slot="trigger" caret>News & Events</sl-button>
             <sl-menu>
               {#each menuData.newsEvents as linkText}
@@ -225,7 +235,7 @@
         </nav>
       {:else}
         <nav class="nav-compact">
-          <sl-dropdown>
+          <sl-dropdown on:sl-select={handleNavigation}>
             <sl-button slot="trigger">
               Menu
               <sl-icon slot="suffix" name="list"></sl-icon>
