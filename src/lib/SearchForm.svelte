@@ -33,18 +33,6 @@
     CATALOG_DOMAIN = window.HT.catalog_domain;
   }
 
-  let searchParams = new URLSearchParams(location.search);
-
-  // seed from the URL
-  if ( searchParams.has('lookfor') ) {
-    _input.value = searchParams.get('lookfor');
-    let searchtype = searchParams.get('searchtype')  || 'all';
-    _searchtype.value = searchtype;
-  } else if ( searchParams.has('q1') ) {
-    _input.value = searchParams.get('q1');
-    _searchtype.value = 'everything';
-  }
-
   let _updateSelect = function(event) {
     _root.dataset.index = event.target.value;
     index = event.target.value;
@@ -77,9 +65,24 @@
     }
   }
 
+  function _updateSearchForm() {
+    let searchParams = new URLSearchParams(location.search);
+
+    // seed from the URL
+    if ( searchParams.has('lookfor') ) {
+      _input.value = searchParams.get('lookfor');
+      let searchtype = searchParams.get('searchtype')  || 'all';
+      _searchtype.value = searchtype;
+    } else if ( searchParams.has('q1') ) {
+      _input.value = searchParams.get('q1');
+      _searchtype.value = 'everything';
+    }
+  }
+
   onMount(() => {
     // take it off the main thread so the sl-selects build themselves
     setTimeout(() => {
+      _updateSearchForm();
       _updateSearchType();
     }, 0);
   })
