@@ -68,7 +68,7 @@
     let searchParams = new URLSearchParams(location.search);
 
     // seed from the URL
-    if ( searchParams.has('lookfor') ) {
+    if ( searchParams.has('lookfor') || location.pathname.indexOf('/Search/') > -1 ) {
       _input.value = searchParams.get('lookfor');
       let searchtype = searchParams.get('searchtype')  || 'all';
       _searchtype.value = searchtype;
