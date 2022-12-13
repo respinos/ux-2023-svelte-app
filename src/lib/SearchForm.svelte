@@ -48,7 +48,7 @@
       submitData.set('ft', 'ft');
       submitData.set('lmt', 'ft');
       search_url = `//${SERVICE_DOMAIN}/cgi/ls?${submitData.toString()}`;
-    } else if ( this.index == 'library' ) {
+    } else if ( index == 'library' ) {
       let submitData = new URLSearchParams();
       submitData.set('lookfor', _input.value);
       submitData.set('searchtype', _searchtype.value);
