@@ -183,7 +183,9 @@
     justify-content: space-between;
     /* margin-top: 1rem; */
     gap: 1.5rem;
-    width: 100%;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .search-links > div {

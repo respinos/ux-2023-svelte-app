@@ -96,7 +96,7 @@
 
     header {
       max-width: 1170px;
-      margin: 0 auto 1rem;
+      margin: 1rem auto 1rem;
     }
 
     .menu {
