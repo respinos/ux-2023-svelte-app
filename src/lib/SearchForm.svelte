@@ -204,6 +204,7 @@
     flex-direction: row;
     gap: 0.25rem;
     align-items: center;
+    text-decoration: none;
   }
 
   span.hint {
