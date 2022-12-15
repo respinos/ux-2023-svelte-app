@@ -92,7 +92,11 @@
 
     .logo {
       grid-area: logo;
+      display: block;
       margin-top: var(--logo-margin-top, 0);
+    }
+
+    .logo img {
       height: var(--logo-height);
     }
 
@@ -167,8 +171,8 @@
 <sl-resize-observer bind:this={resizeObserver}>
   <header>
     <div class="menu">
-      <a href="https://www.hathitrust.org" aria-label="Home">
-        <img class="logo" alt="HathiTrust Digital Library" src={assetPath + logo} />
+      <a href="https://www.hathitrust.org" aria-label="Home" class="logo">
+        <img alt="HathiTrust Digital Library" src={assetPath + logo} />
       </a>
       {#if containerWidth == 0}
         <div><sl-icon name="smartwatch"></sl-icon></div>
