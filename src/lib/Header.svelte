@@ -69,6 +69,9 @@
 <style>
     :global(hathi-website-header) {
       --orange: #e67821;
+      --logo-height: 60px;
+      --header-margin-top: 1rem;
+      --header-margin-bottom: 1rem;
     }
 
     *, *::after, *::before {
@@ -77,7 +80,7 @@
 
     header {
       max-width: 1170px;
-      margin: 1rem auto 1rem;
+      margin: var(--header-margin-top) auto var(--header-margin-bottom);
     }
 
     .menu {
@@ -89,7 +92,8 @@
 
     .logo {
       grid-area: logo;
-      height: 60px;
+      margin-top: var(--logo-margin-top, 0);
+      height: var(--logo-height);
     }
 
     nav.nav {
