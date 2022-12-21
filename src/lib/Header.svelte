@@ -21,6 +21,9 @@
   import menuData from '../assets/menuData.json';
 
   import SearchForm from './SearchForm.svelte';
+  import DropdownMenu from './DropdownMenu.svelte';
+  import NavButton from './NavButton.svelte';
+  import DropdownMenuLinks from './DropdownMenuLinks.svelte';
 
   let containerWidth = 2000;
   export let search_state = 'default';
@@ -104,23 +107,7 @@
       grid-area: nav;
       display: flex;
       align-items: center;
-      gap: 1rem;
-    }
-
-    nav.nav sl-button::part(base) {
-      color: black;
-      padding: 0;
-    }
-
-    nav.nav sl-button::part(base)::hover {
-      color: orange;
-      padding: 0;
-      background: black;
-    }
-
-    nav.nav sl-button::part(label) {
-      padding-left: 0.25rem;
-      padding-right: 0.25rem;
+      gap: 0.5rem;
     }
 
     nav.actions {
@@ -178,39 +165,12 @@
         <div><sl-icon name="smartwatch"></sl-icon></div>
       {:else if containerWidth >= 1170}
         <nav class="nav">
-          <sl-dropdown on:sl-select={handleNavigation}>
-            <sl-button variant="text" slot="trigger" caret>About</sl-button>
-            <sl-menu>
-              {#each menuData.about as linkText}
-              <sl-menu-item>{linkText}</sl-menu-item>
-              {/each}
-            </sl-menu>
-          </sl-dropdown>
-          <sl-dropdown on:sl-select={handleNavigation}>
-            <sl-button variant="text" slot="trigger" caret>The Collection</sl-button>
-            <sl-menu>
-              {#each menuData.collection as linkText}
-              <sl-menu-item>{linkText}</sl-menu-item>
-              {/each}
-            </sl-menu>
-          </sl-dropdown>
-          <sl-dropdown on:sl-select={handleNavigation}>
-            <sl-button variant="text" slot="trigger" caret>Member Libraries</sl-button>
-            <sl-menu>
-              {#each menuData.memberLibraries as linkText}
-              <sl-menu-item>{linkText}</sl-menu-item>
-              {/each}
-            </sl-menu>
-          </sl-dropdown>
-          <sl-button variant="text">Join Us</sl-button>
-          <sl-dropdown on:sl-select={handleNavigation}>
-            <sl-button variant="text" slot="trigger" caret>News & Events</sl-button>
-            <sl-menu>
-              {#each menuData.newsEvents as linkText}
-              <sl-menu-item>{linkText}</sl-menu-item>
-              {/each}
-            </sl-menu>
-          </sl-dropdown>
+          <DropdownMenu menuLabel="About" menuLinks={menuData.about} />
+          <DropdownMenu menuLabel="The Collection" menuLinks={menuData.collection} />
+          <DropdownMenu menuLabel="Member Libraries" menuLinks={menuData.memberLibraries} />
+          <DropdownMenu menuLabel="Member Libraries" menuLinks={menuData.memberLibraries} />
+          <NavButton label="Join Us" />
+          <DropdownMenu menuLabel="News & Events" menuLinks={menuData.newsEvents} />
         </nav>
       {:else}
         <nav class="nav-compact">
@@ -221,26 +181,18 @@
             </sl-button>
             <sl-menu>
               <sl-menu-label>About</sl-menu-label>
-              {#each menuData.about as linkText}
-              <sl-menu-item>{linkText}</sl-menu-item>
-              {/each}
+              <DropdownMenuLinks menuLinks={menuData.about} />
               <sl-divider></sl-divider>
               <sl-menu-label>The Collection</sl-menu-label>
-              {#each menuData.collection as linkText}
-              <sl-menu-item>{linkText}</sl-menu-item>
-              {/each}
+              <DropdownMenuLinks menuLinks={menuData.collection} />
               <sl-divider></sl-divider>
               <sl-menu-label>Member Libraries</sl-menu-label>
-              {#each menuData.memberLibraries as linkText}
-              <sl-menu-item>{linkText}</sl-menu-item>
-              {/each}
+              <DropdownMenuLinks menuLinks={menuData.memberLibraries} />
               <sl-divider></sl-divider>
               <sl-menu-item>Join Us</sl-menu-item>
               <sl-divider></sl-divider>
               <sl-menu-label>News & Events</sl-menu-label>
-              {#each menuData.newsEvents as linkText}
-              <sl-menu-item>{linkText}</sl-menu-item>
-              {/each}
+              <DropdownMenuLinks menuLinks={menuData.newsEvents} />
             </sl-menu>
         </nav>
       {/if}
